@@ -91,9 +91,33 @@ app.get("/destinations/:id", (req, res) => {
 	})();
 });
 
-// Update -> put()
+// Update -> patch()
+app.patch("/destinations/update/:id", (req, res) => {
+	(async () => {
+		try {
+			await db.collection("destinations").doc(req.params.id).update({
+				name: req.body.name,
+				coordinates: [req.body.coordX, req.body.coordY],
+			});
+
+			return res.status(200).send(JSON.stringify({status: "Success", data: "Destination updated successfully!"}));
+		} catch (error) {
+			return res.status(500).send(JSON.stringify({status: "Error", message: error}));
+		}
+	})();
+});
 
 // Delete -> delete()
+app.delete("/destinations/delete/:id", (req, res) => {
+	(async () => {
+		try {
+			await db.collection("destinations").doc(req.params.id).delete();
+			return res.status(200).send(JSON.stringify({status: "Success", data: "Destination deleted successfully!"}));
+		} catch (error) {
+			return res.status(500).send(JSON.stringify({status: "Error", message: error}));
+		}
+	})();
+});
 
 // exports the api to firebase cloud functions
 exports.api = functions.region('europe-west1').https.onRequest(app);
