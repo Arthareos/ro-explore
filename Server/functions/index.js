@@ -37,9 +37,9 @@ app.post("/destinations/create", (req, res) => {
 				coordinates: [req.body.coordX, req.body.coordY]
 			})
 
-			return res.status(200).send({status: "Success", message: "Destination created successfully!"});
+			return res.status(200).send(JSON.stringify({status: "Success", message: "Destination created successfully!"}));
 		} catch (error) {
-			return res.status(500).send({status: "Error", message: error});
+			return res.status(500).send(JSON.stringify({status: "Error", message: error}));
 		}
 	})();
 });
@@ -66,9 +66,9 @@ app.get("/destinations", (req, res) => {
 				return response;
 			})
 
-			return res.status(200).send({status: "Success", data: response});
+			return res.status(200).send(JSON.stringify({status: "Success", data: response}));
 		} catch (error) {
-			return res.status(500).send({status: "Error", message: error});
+			return res.status(500).send(JSON.stringify({status: "Error", message: error}));
 		}
 	})();
 });
@@ -80,9 +80,13 @@ app.get("/destinations/:id", (req, res) => {
 			let documentData = await requestedDocument.get();
 			let response = documentData.data();
 
-			return res.status(200).send({status: "Success", data: response});
+			if (response)
+				return res.status(200).send(JSON.stringify({status: "Success", data: response}));
+
+			return res.status(404).send(JSON.stringify({status: "Error", message: "Resource not found!"}));
+			
 		} catch (error) {
-			return res.status(500).send({status: "Error", message: error});
+			return res.status(500).send(JSON.stringify({status: "Error", message: error}));
 		}
 	})();
 });
