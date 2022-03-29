@@ -32,17 +32,60 @@ app.get("/", (req, res) => {
 app.post("/destinations/create", (req, res) => {
 	(async () => {
 		try {
-			await db.collection("destionations").doc().create({
+			await db.collection("destinations").doc().create({
 				name: req.body.name,
-				coordinates: [req.body.x, req.body.y]
+				coordinates: [req.body.coordX, req.body.coordY]
 			})
-		} catch (error) {
 
+			return res.status(200).send({status: "Success", message: "Destination created successfully!"});
+		} catch (error) {
+			return res.status(500).send({status: "Error", message: error});
 		}
 	})();
 });
 
 // Get -> get()
+app.get("/destinations", (req, res) => {
+	(async () => {
+		try {
+			const query = db.collection("destinations");
+			let response = [];
+
+			await query.get().then((data) => {
+				let docs = data.docs;
+
+				docs.map((doc) => {
+					const currentItem = {
+						name: doc.data().name,
+						coordinates: doc.data().coordinates,
+					};
+
+					response.push(currentItem);
+				});
+
+				return response;
+			})
+
+			return res.status(200).send({status: "Success", data: response});
+		} catch (error) {
+			return res.status(500).send({status: "Error", message: error});
+		}
+	})();
+});
+
+app.get("/destinations/:id", (req, res) => {
+	(async () => {
+		try {
+			const requestedDocument = db.collection("destinations").doc(req.params.id);
+			let documentData = await requestedDocument.get();
+			let response = documentData.data();
+
+			return res.status(200).send({status: "Success", data: response});
+		} catch (error) {
+			return res.status(500).send({status: "Error", message: error});
+		}
+	})();
+});
 
 // Update -> put()
 
@@ -50,36 +93,3 @@ app.post("/destinations/create", (req, res) => {
 
 // exports the api to firebase cloud functions
 exports.api = functions.region('europe-west1').https.onRequest(app);
-
-// exports.helloWorld = functions.region('europe-west1').https.onRequest((request, response) => {
-// 	response.status(200).send("Hello World!");
-// });
-
-// exports.destinations = functions.region('europe-west1').https.onRequest((request, response) => {
-
-// //  functions.logger.info("Hello logs!", {structuredData: true});
-
-// 	switch (request.method) {
-// 		case "GET":
-// 			response.status(200).send("This is the destinations GET endpoint");
-// 			break;
-
-// 		case "POST":
-// 			let body = JSON.stringify(request.query.text);
-// 			response.status(200).send(body);
-// 			break;
-
-// 		case "PUT":
-// 			response.send("This is the destinations PUT endpoint");
-// 			break;
-
-// 		case "DELETE":
-// 			response.send("This is the destinations DELETE endpoint");
-// 			break;
-
-// 		default:
-// 			response.send("Invalid request");
-// 			break;
-
-// 	}
-// });
