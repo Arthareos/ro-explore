@@ -56,6 +56,7 @@ app.get("/destinations", (req, res) => {
 
 				docs.map((doc) => {
 					const currentItem = {
+						id: doc.id;
 						name: doc.data().name,
 						coordinates: doc.data().coordinates,
 					};
