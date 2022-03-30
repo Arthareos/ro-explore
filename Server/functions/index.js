@@ -34,7 +34,8 @@ app.post("/destinations/create", (req, res) => {
 		try {
 			await db.collection("destinations").doc().create({
 				name: req.body.name,
-				coordinates: [req.body.coordX, req.body.coordY]
+				coordinates: [req.body.coordX, req.body.coordY],
+				description: req.body.description,
 			})
 
 			return res.status(200).send(JSON.stringify({status: "Success", message: "Destination created successfully!"}));
@@ -56,9 +57,10 @@ app.get("/destinations", (req, res) => {
 
 				docs.map((doc) => {
 					const currentItem = {
-						id: doc.id;
+						id: doc.id,
 						name: doc.data().name,
 						coordinates: doc.data().coordinates,
+						description: doc.data().description,
 					};
 
 					response.push(currentItem);
@@ -99,6 +101,7 @@ app.patch("/destinations/update/:id", (req, res) => {
 			await db.collection("destinations").doc(req.params.id).update({
 				name: req.body.name,
 				coordinates: [req.body.coordX, req.body.coordY],
+				description: req.body.description,
 			});
 
 			return res.status(200).send(JSON.stringify({status: "Success", data: "Destination updated successfully!"}));
