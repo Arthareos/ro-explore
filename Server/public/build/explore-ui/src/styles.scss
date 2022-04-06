@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+	font-family: explore-title;
+	src: url("./assets/fonts/title.ttf");
+}
+
+@font-face {
+	font-family: explore-text;
+	src: url("./assets/fonts/text.ttf");
+}
+
+* {
+	margin: 0px;
+}
