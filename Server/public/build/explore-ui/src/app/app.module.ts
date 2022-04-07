@@ -8,6 +8,8 @@ import { ExploreNavbarButtonComponent } from './explore-navbar/explore-navbar-bu
 import { ExploreTitleComponent } from './typography/explore-title/explore-title.component';
 import { ExploreTextComponent } from './typography/explore-text/explore-text.component';
 import { ExploreLogoComponent } from './shared/explore-logo/explore-logo.component';
+import { ExploreMainButtonComponent } from './shared/explore-main-button/explore-main-button.component';
+import { ExploreMainButtonContainerComponent } from './shared/explore-main-button-container/explore-main-button-container.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ExploreLogoComponent } from './shared/explore-logo/explore-logo.compone
     ExploreNavbarButtonComponent,
     ExploreTitleComponent,
     ExploreTextComponent,
-    ExploreLogoComponent
+    ExploreLogoComponent,
+    ExploreMainButtonComponent,
+    ExploreMainButtonContainerComponent
   ],
   imports: [
     BrowserModule,

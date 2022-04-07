@@ -1,0 +1,19 @@
+@import '../../../styles.scss';
+
+button {
+  margin: 0px 8px 0px 0px;
+
+  text-decoration: none;
+  font-family: explore-text;
+  color: white;
+  background-color: $main-color;
+
+  &:hover {
+    color: white;
+    background-color: $main-color-accent;
+  }
+
+  p {
+    margin: 0px;
+  }
+}

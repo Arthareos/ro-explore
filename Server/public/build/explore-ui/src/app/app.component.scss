@@ -1,0 +1,39 @@
+main-container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.landing-half {
+  overflow: hidden;
+  width: 50vw;
+  height: 100vh;
+  padding: 24px;
+
+  &.media {
+
+    .video-container{
+      height: 100%;
+      overflow: hidden;
+      border: 0px;
+      border-radius: 16px;
+
+      video {
+          min-width: 100%;
+          min-height: 100%;
+
+          width: auto;
+          height: auto;
+
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+      }
+    }
+  }
+
+  // &.data {
+  //   background-color: green;
+  // }
+}
