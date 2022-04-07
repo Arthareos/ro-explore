@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
     if (video) {
       video.muted = true;
       video.autoplay = true;
+      video.loop = true;
       video.play();
     }
   }

@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./explore-main-button-container.component.scss']
 })
 export class ExploreMainButtonContainerComponent {
-  public types: string[] = ["Landmarks", "Museums", "Monuments", "Hikes"];
+  public types: string[] = ["Landmarks", "Museums", "Monuments", "Hikes", "What's around?"];
 
   constructor() {}
 }
