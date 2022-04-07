@@ -11,8 +11,6 @@ main-container {
   padding: 24px;
 
   &.media {
-    width: 60vw;
-
     .video-container{
       height: 100%;
       overflow: hidden;
@@ -35,6 +33,7 @@ main-container {
   }
 
   &.data {
-    width: 40vw;
+    // width: 40vw;
+    padding: 0px 48px 0px 32px;
   }
 }
