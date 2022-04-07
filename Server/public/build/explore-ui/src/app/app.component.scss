@@ -6,11 +6,12 @@ main-container {
 
 .landing-half {
   overflow: hidden;
-  width: 50vw;
+
   height: 100vh;
   padding: 24px;
 
   &.media {
+    width: 60vw;
 
     .video-container{
       height: 100%;
@@ -33,7 +34,7 @@ main-container {
     }
   }
 
-  // &.data {
-  //   background-color: green;
-  // }
+  &.data {
+    width: 40vw;
+  }
 }
