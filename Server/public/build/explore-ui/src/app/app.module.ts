@@ -10,6 +10,8 @@ import { ExploreTextComponent } from './typography/explore-text/explore-text.com
 import { ExploreLogoComponent } from './shared/explore-logo/explore-logo.component';
 import { ExploreMainButtonComponent } from './shared/explore-main-button/explore-main-button.component';
 import { ExploreMainButtonContainerComponent } from './shared/explore-main-button-container/explore-main-button-container.component';
+import { ExplorePageDestinationsComponent } from './explore-page-destinations/explore-page-destinations.component';
+import { ExplorePageLandingComponent } from './explore-page-landing/explore-page-landing.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ExploreMainButtonContainerComponent } from './shared/explore-main-butto
     ExploreTextComponent,
     ExploreLogoComponent,
     ExploreMainButtonComponent,
-    ExploreMainButtonContainerComponent
+    ExploreMainButtonContainerComponent,
+    ExplorePageDestinationsComponent,
+    ExplorePageLandingComponent
   ],
   imports: [
     BrowserModule,
