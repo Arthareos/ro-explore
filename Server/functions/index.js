@@ -50,11 +50,15 @@ app.get("/destinations", (req, res) => {
 	(async () => {
 		try {
 			const query = db.collection("destinations");
-			let response = [];
-
+			let response = {
+				numberOfResults: 0,
+				documentData: null
+			};
+			
 			await query.get().then((data) => {
 				let docs = data.docs;
 
+				let documents = [];
 				docs.map((doc) => {
 					const currentItem = {
 						id: doc.id,
@@ -63,8 +67,13 @@ app.get("/destinations", (req, res) => {
 						description: doc.data().description,
 					};
 
-					response.push(currentItem);
+					documents.push(currentItem);
 				});
+
+				response = {
+					numberOfResults: data.size,
+					documentData: documents
+				};
 
 				return response;
 			})
