@@ -3,16 +3,16 @@ import { ExplorePageLandingComponent } from './explore-page-landing/explore-page
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [
-  { path: '', component: ExplorePageLandingComponent },
+const ROUTES: Routes = [
+  { path: 'home', component: ExplorePageLandingComponent },
   { path: 'destinations', component: ExplorePageDestinationsComponent },
 
   // otherwise redirect to home
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '/home' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(ROUTES, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
