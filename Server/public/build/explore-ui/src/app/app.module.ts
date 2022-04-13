@@ -13,6 +13,7 @@ import { ExploreMainButtonComponent } from './shared/explore-main-button/explore
 import { ExploreMainButtonContainerComponent } from './shared/explore-main-button-container/explore-main-button-container.component';
 import { ExplorePageDestinationsComponent } from './explore-page-destinations/explore-page-destinations.component';
 import { ExplorePageLandingComponent } from './explore-page-landing/explore-page-landing.component';
+import { ExplorePageDestinationsCardComponent } from './explore-page-destinations/explore-page-destinations-card/explore-page-destinations-card.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ExplorePageLandingComponent } from './explore-page-landing/explore-page
     ExploreMainButtonComponent,
     ExploreMainButtonContainerComponent,
     ExplorePageDestinationsComponent,
-    ExplorePageLandingComponent
+    ExplorePageLandingComponent,
+    ExplorePageDestinationsCardComponent
   ],
   imports: [
     BrowserModule,

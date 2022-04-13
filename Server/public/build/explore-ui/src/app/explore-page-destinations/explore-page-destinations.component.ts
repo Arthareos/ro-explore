@@ -1,6 +1,6 @@
+import { Component, OnInit } from '@angular/core';
 import { Destination } from './../services/interfaces/destination';
 import { ExploreDestinationService } from './../services/explore-service-destination/explore-service-destination.service';
-import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-explore-page-destinations',
@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./explore-page-destinations.component.scss']
 })
 export class ExplorePageDestinationsComponent implements OnInit {
-  private destinations: Destination[] | undefined;
+  public destinations: Array<Destination> = [];
 
   constructor(private destinationService: ExploreDestinationService) {}
 
@@ -17,14 +17,14 @@ export class ExplorePageDestinationsComponent implements OnInit {
   }
 
   onGetDestinations(): void {
-    this.destinationService.getDestinations().subscribe(
-      (response) => {
-        this.destinations = response;
-        console.log(response);
-      },
-      (error: any) => console.log(error),
-      () => console.log('Done getting users')
-    );
-  }
+    this.destinations = [];
 
+    this.destinationService.getDestinations().subscribe({
+      next: (v) => {
+        this.destinations = v.data;
+      },
+      error: (e) => console.log(e),
+      complete: () => {}
+    });
+  }
 }

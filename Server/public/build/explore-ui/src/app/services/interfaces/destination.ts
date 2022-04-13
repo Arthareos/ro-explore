@@ -1,6 +1,8 @@
+import { Coordinates } from './coordinates';
+
 export interface Destination {
   id: string;
   name: string;
-  coordinates: string[];
+  coordinates: Coordinates;
   description: string;
 }

@@ -34,7 +34,7 @@ app.post("/destinations/create", (req, res) => {
 		try {
 			await db.collection("destinations").doc().create({
 				name: req.body.name,
-				coordinates: [req.body.coordX, req.body.coordY],
+				coordinates: {x: req.body.coordX, y: req.body.coordY},
 				description: req.body.description,
 			})
 
@@ -59,7 +59,10 @@ app.get("/destinations", (req, res) => {
 					const currentItem = {
 						id: doc.id,
 						name: doc.data().name,
-						coordinates: doc.data().coordinates,
+						coordinates: {
+							x: doc.data().coordinates.x,
+							y: doc.data().coordinates.y
+						},
 						description: doc.data().description,
 					};
 
@@ -100,7 +103,10 @@ app.patch("/destinations/update/:id", (req, res) => {
 		try {
 			await db.collection("destinations").doc(req.params.id).update({
 				name: req.body.name,
-				coordinates: [req.body.coordX, req.body.coordY],
+				coordinates: {
+					x: doc.data().coordinates.x,
+					y: doc.data().coordinates.y
+				},
 				description: req.body.description,
 			});
 
