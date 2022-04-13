@@ -50,15 +50,11 @@ app.get("/destinations", (req, res) => {
 	(async () => {
 		try {
 			const query = db.collection("destinations");
-			let response = {
-				numberOfResults: 0,
-				documentData: null
-			};
-			
+			let response = [];
+
 			await query.get().then((data) => {
 				let docs = data.docs;
 
-				let documents = [];
 				docs.map((doc) => {
 					const currentItem = {
 						id: doc.id,
@@ -67,13 +63,8 @@ app.get("/destinations", (req, res) => {
 						description: doc.data().description,
 					};
 
-					documents.push(currentItem);
+					response.push(currentItem);
 				});
-
-				response = {
-					numberOfResults: data.size,
-					documentData: documents
-				};
 
 				return response;
 			})
@@ -134,3 +125,32 @@ app.delete("/destinations/delete/:id", (req, res) => {
 
 // exports the api to firebase cloud functions
 exports.api = functions.region('europe-west1').https.onRequest(app);
+
+// For future reference
+// let response = {
+// 	numberOfResults: 0,
+// 	documentData: null
+// };
+
+// await query.get().then((data) => {
+// 	let docs = data.docs;
+
+// 	let documents = [];
+// 	docs.map((doc) => {
+// 		const currentItem = {
+// 			id: doc.id,
+// 			name: doc.data().name,
+// 			coordinates: doc.data().coordinates,
+// 			description: doc.data().description,
+// 		};
+
+// 		documents.push(currentItem);
+// 	});
+
+// 	response = {
+// 		numberOfResults: data.size,
+// 		documentData: documents
+// 	};
+
+// 	return response;
+// })
