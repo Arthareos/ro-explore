@@ -33,7 +33,10 @@ main-container {
   }
 
   &.data {
-    // width: 40vw;
     padding: 0px 48px 0px 32px;
+
+    app-explore-text {
+      margin-bottom: 1rem;
+    }
   }
 }

@@ -7,7 +7,22 @@
 
   img {
     width: 100%;
-    height: 300px;
+    height: auto;
     object-fit: fill;
+  }
+
+  app-explore-text {
+    margin: 0px;
+  }
+
+  app-explore-main-button {
+    margin-top: 1rem;
+  }
+
+  .overflow {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }

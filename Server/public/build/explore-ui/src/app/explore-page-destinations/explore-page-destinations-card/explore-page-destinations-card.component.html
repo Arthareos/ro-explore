@@ -1,8 +1,9 @@
 <div class="card">
-  <img src={{image}} class="card-img-top" alt="pending">
+  <!-- <img src={{image}} class="card-img-top" alt="pending"> -->
+  <img src="https://picsum.photos/600/300" class="card-img-top" alt="pending">
   <div class="card-body">
-    <h5 class="card-title">{{name}}</h5>
-    <p class="card-text">{{description}}</p>
+    <app-explore-title class="card-title overflow" text={{name}}></app-explore-title>
+    <app-explore-text class="card-text overflow" text={{description}}></app-explore-text>
     <app-explore-main-button class="float-end" text={{id}}></app-explore-main-button>
   </div>
 </div>
