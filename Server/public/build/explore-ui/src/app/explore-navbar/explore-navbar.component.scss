@@ -1,10 +1,22 @@
 div {
   width: 100%;
-  margin: 32px 64px;
+  margin: 32px 0px;
   padding: 0px;
-}
 
-app-explore-logo {
-  margin-right: 16px;
-  cursor: pointer;
+  @media only screen and (max-width: 768px) {
+    margin: auto;
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+
+  app-explore-logo {
+    margin: auto;
+    cursor: pointer;
+  }
+
+  app-explore-navbar-button {
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
+  }
 }

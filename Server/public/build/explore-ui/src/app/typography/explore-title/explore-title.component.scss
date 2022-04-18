@@ -1,3 +1,8 @@
 h1 {
 	font-family: explore-title;
+  margin: 0px;
+
+  @media only screen and (max-width: 768px) {
+    margin: 0px 0px 0px 0px;
+  }
 }

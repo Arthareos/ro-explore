@@ -1,8 +1,9 @@
 <div class="container d-flex flex-column">
   <app-explore-title text="Browse between {{this.destinations.length}} destinations"></app-explore-title>
-  <div class="d-flex flex-row flex-wrap">
+  <div class="row">
     <app-explore-page-destinations-card
         *ngFor="let destination of this.destinations"
+        class="col-12 col-md-4"
         destinationName={{destination.name}}
         destinationDescription={{destination.description}}
         destinationCoordX={{destination.coordinates.x}}
