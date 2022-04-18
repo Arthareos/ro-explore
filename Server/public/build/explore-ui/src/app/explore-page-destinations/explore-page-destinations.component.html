@@ -1,6 +1,6 @@
 <div class="container d-flex flex-column">
-  <app-explore-title text="There are {{this.destinations.length}} destinations"></app-explore-title>
-  <div id="d-flex flex-row flex-wrap">
+  <app-explore-title text="Browse between {{this.destinations.length}} destinations"></app-explore-title>
+  <div class="d-flex flex-row flex-wrap">
     <app-explore-page-destinations-card
         *ngFor="let destination of this.destinations"
         destinationName={{destination.name}}
