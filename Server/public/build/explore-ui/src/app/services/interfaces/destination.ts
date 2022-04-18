@@ -5,4 +5,5 @@ export interface Destination {
   name: string;
   coordinates: Coordinates;
   description: string;
+  image: string;
 }

@@ -11,6 +11,7 @@ export class ExplorePageDestinationsCardComponent {
   @Input("destinationCoordX") coordX = "";
   @Input("destinationCoordY") coordY = "";
   @Input("destinationId") id = "";
+  @Input("destinationImage") image = "";
 
   constructor() {}
 }

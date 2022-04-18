@@ -34,7 +34,11 @@ app.post("/destinations/create", (req, res) => {
 		try {
 			await db.collection("destinations").doc().create({
 				name: req.body.name,
-				coordinates: {x: req.body.coordX, y: req.body.coordY},
+				coordinates: {
+					x: req.body.coordX,
+					y: req.body.coordY,
+				},
+				image: req.body.image,
 				description: req.body.description,
 			})
 
@@ -63,6 +67,7 @@ app.get("/destinations", (req, res) => {
 							x: doc.data().coordinates.x,
 							y: doc.data().coordinates.y
 						},
+						image: doc.data().image,
 						description: doc.data().description,
 					};
 
@@ -104,14 +109,15 @@ app.patch("/destinations/update/:id", (req, res) => {
 			await db.collection("destinations").doc(req.params.id).update({
 				name: req.body.name,
 				coordinates: {
-					x: doc.data().coordinates.x,
-					y: doc.data().coordinates.y
+					x: req.body.coordX,
+					y: req.body.coordY,
 				},
+				image: req.body.image,
 				description: req.body.description,
 			});
-
 			return res.status(200).send(JSON.stringify({status: "Success", data: "Destination updated successfully!"}));
 		} catch (error) {
+			console.log(error);
 			return res.status(500).send(JSON.stringify({status: "Error", message: error}));
 		}
 	})();
