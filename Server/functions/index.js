@@ -12,8 +12,9 @@ const cors = require("cors");
 
 // REST API Methods
 // GET		Retrieve information about the REST API resource
-// POST		Create a REST API resource
-// PUT		Update a REST API resource
+// POST		Retrieve information about the REST API resource (with body)
+// PUT		Create a REST API resource
+// UPDATE	Update a REST API resource
 // DELETE	Delete a REST API resource or related component
 
 // Main app
